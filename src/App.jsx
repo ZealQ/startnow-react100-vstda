@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
       text: " ",
-      priority: "1",
+      priority: "0",
       todoList: []
     };
     // event handelers bound to the state
@@ -36,6 +36,7 @@ class App extends Component {
       text: "",
       todoList: todoList.concat(newListObj)
     });
+    document.getElementById("form").reset();
   }
   // create newobj  for the todo lis arry
 
@@ -71,9 +72,9 @@ class App extends Component {
 
   render() {
     return (
-// my container
+      // my container
       <div className="container-fluid">
-      {/* tittle of the app */}
+        {/* tittle of the app */}
         <h2 className="white mt-3">Very Simple Todo App</h2>
         {/* subtittle */}
         <p className="white text-muted">Track Everything</p>
@@ -83,46 +84,50 @@ class App extends Component {
         <div className="row">
           <div className="col-4">
             <div className="card">
-            {/* header (tittle) */}
+              {/* header (tittle) */}
               <p className="card-header h6">
                 Add New Todo
                </p>
               <div className="card-block">
-                <label htmlFor="create">
-                  <strong>I Want To..</strong>
-                </label>
-                {/* user input area */}
-                <textarea
-                  name="text"
-                  id="create"
-                  className="create-todo-text btn-block"
-                  defaultValue={this.state.text}
-                  onChange={this.handelChange}
-                />
-                {/* the priority selection */}
-                <label htmlFor="priority">
-                  <strong>How much of a priority is this</strong>
-                </label>
-                <select
-                  name="priority"
-                  id="priority"
-                  className="create-todo-priority btn-block"
-                  placeholder="select priority"
-                  defaultValue={this.state.priority}
-                  onChange={this.handelChange}
-                >
-                  <option value="3">High Priority</option>
-                  <option value="2">Medium Priority</option>
-                  <option value="1">Low Priority</option>
-                </select>
+                <form id="form">
+                  <label htmlFor="create">
+                    <strong>I Want To..</strong>
+                  </label>
+                  {/* user input area */}
+                  <textarea
+                    name="text"
+                    id="create"
+                    className="create-todo-text btn-block"
+                    defaultValue={this.state.text}
+                    onChange={this.handelChange}
+                  />
+                  {/* the priority selection */}
+                  <label htmlFor="priority">
+                    <strong>How much of a priority is this</strong>
+                  </label>
+                  <select
+                    name="priority"
+                    id="priority"
+                    className="create-todo-priority btn-block"
+                    placeholder="select priority"
+                    defaultValue={this.state.priority}
+                    onChange={this.handelChange}
+                  >
+                    <option value="0">Select A Priority</option>
+                    <option value="3">High Priority</option>
+                    <option value="2">Medium Priority</option>
+                    <option value="1">Low Priority</option>
+                  </select>
+                </form>
               </div>
               {/* bottom of the box */}
               <div className="card-footer">
-              {/* the Add button */}
+                {/* the Add button */}
                 <button
                   name="submit"
                   type="button"
                   className="btn btn-success btn-block create-todo"
+                  disabled={!this.state.text}
                   onClick={this.handelAddEvent}
                 > Add </button>
               </div>
@@ -143,7 +148,7 @@ class App extends Component {
                     (this.state.todoList.map(list => (
                       // Todo is a function pulled from another file
                       <Todo
-                      // on save,delete,key,andtask are all from the Todo file
+                        // on save,delete,key,andtask are all from the Todo file
                         onDelete={this.deleteHandeler}
                         onSave={this.saveHandeler}
                         key={list.id}
