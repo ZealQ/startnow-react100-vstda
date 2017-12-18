@@ -113,7 +113,7 @@ class App extends Component {
                     defaultValue={this.state.priority}
                     onChange={this.handelChange}
                   >
-                    <option value="0">Select A Priority</option>
+                    <option value="0"hidden>Select A Priority</option>
                     <option value="3">High Priority</option>
                     <option value="2">Medium Priority</option>
                     <option value="1">Low Priority</option>
