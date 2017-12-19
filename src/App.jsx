@@ -77,7 +77,7 @@ class App extends Component {
         {/* tittle of the app */}
         <h2 className="white mt-3">Very Simple Todo App</h2>
         {/* subtittle */}
-        <p className="white text-muted">Track Everything</p>
+        <p id="subTitle" className="white text-muted">Track Everything</p>
         {/* line that is uner tittles */}
         <hr />
         {/* the small box where user will do input and selest priority */}
@@ -85,7 +85,7 @@ class App extends Component {
           <div className="col-4">
             <div className="card">
               {/* header (tittle) */}
-              <p className="card-header h6">
+              <p id="formTitle" className="card-header h6">
                 Add New Todo
                </p>
               <div className="card-block">
@@ -125,6 +125,7 @@ class App extends Component {
                 {/* the Add button */}
                 <button
                   name="submit"
+                  id="button"
                   type="button"
                   className="btn btn-success btn-block create-todo"
                   disabled={!this.state.text}
@@ -136,7 +137,7 @@ class App extends Component {
           {/* the main body after the user input */}
           <div className="col-8">
             <div className="card">
-              <p className="card-header h6">View Todos</p>
+              <p id="viewTodos" className="card-header h6">View Todos</p>
               <div className="card-block no-padding pull-right">
                 {
                   (this.state.todoList.lenght === 0) ?
